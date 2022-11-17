@@ -21,12 +21,8 @@ class _ClientesState extends State<Clientes> {
   final TextEditingController _usuarioController = TextEditingController();
   final CollectionReference _clientes = FirebaseFirestore.instance.collection('clientes');
 
-  List<String> listFiltro = <String>['One', 'Two', 'Three', 'Four'];
-  late String dropdownValue;
-
   @override
   void initState() {
-    dropdownValue = listFiltro.first;
     super.initState();
   }
 
@@ -36,113 +32,6 @@ class _ClientesState extends State<Clientes> {
       //_nombreController.text = documentSnapshot['nombre'].toString();
       //_precioController.text = documentSnapshot['precio'].toString();
     }
-  }
-
-  Widget filtro() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0),
-            child: Container(
-              width: MediaQuery.of(context).size.width / 1.4,
-              height: 50,
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.amber)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: DropdownButton<String>(
-                  value: dropdownValue,
-                  elevation: 16,
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                  icon: const Icon(
-                    Icons.arrow_drop_down,
-                  ),
-                  dropdownColor: Colors.amber,
-                  underline: Container(
-                    height: 0,
-                  ),
-                  onChanged: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                      dropdownValue = value!;
-                    });
-                  },
-                  items:
-                      listFiltro.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  bool masculino =  true;
-  //insercion de clientes
-  Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
-    await showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (BuildContext ctx) {
-        return Padding(
-          padding: EdgeInsets.only(
-            top: 20,
-            left: 20,
-            right: 20,
-            bottom: MediaQuery.of(ctx).viewInsets.bottom + 20
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextField(
-                controller: _nombreController,
-                decoration: const InputDecoration(labelText: 'Nombre Cliente:'),
-              ),
-              TextField(
-                controller: _apellidoController,
-                decoration: const InputDecoration(labelText: 'Apellido Cliente:'),
-              ),
-              TextField(
-                controller: _apellidoController,
-                decoration: const InputDecoration(labelText: 'Usuario Cliente:'),
-              ),
-              //switchestado(),
-              
-
-              filtro(),
-              
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                child: const Text('Guardar'),
-                onPressed: () async {
-                  final String nombre = _nombreController.text;
-                  final String apellido = _apellidoController.text;
-                  //if (precio != null) {
-                    await _clientes.add({"nombre": nombre, "apellido": apellido});
-
-                    _nombreController.text = '';
-                    //_precioController.text = '';
-                    Navigator.of(context).pop();
-                  //}
-                },
-              )
-            ],
-          ),
-        );
-      }
-    );
   }
 
   Future<void> _delete(String clienteId, String nameClient) async {
