@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:parcial04flutter/Paginas/AddCliente.dart';
+import 'package:parcial04flutter/Paginas/UpdCliente.dart';
 
 class Clientes extends StatefulWidget {
   const Clientes({super.key});
@@ -84,7 +85,19 @@ class _ClientesState extends State<Clientes> {
                           IconButton(
                             icon: const Icon(Icons.edit),
                             color: Colors.green,
-                            onPressed: () => _update(documentSnapshot)
+                            onPressed:() async {
+                              if (await confirm(
+                                context,
+                                title: const Text("Confirmar"),
+                                content: const Text("Esta Seguro De Actualizar El Registro")
+                              )) {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => UdpCliente(cliente_upd: documentSnapshot,)));
+                                //=> _update(documentSnapshot)
+                              }
+                            }
                           ),
                           IconButton(
                             icon: const Icon(Icons.delete),
