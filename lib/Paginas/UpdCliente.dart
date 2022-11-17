@@ -280,7 +280,7 @@ class _UdpClienteState extends State<UdpCliente> {
             final String tipo = _tipoController.text;
             final String usuario = _usuarioController.text;
 
-            await _clientes.add(
+            await _clientes.doc(widget.cliente_upd!.id).update(
               {
                 "cedula" : cedula,
                 "nombre" : nombre,
