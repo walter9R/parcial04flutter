@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:parcial04flutter/Paginas/AddCliente.dart';
 
@@ -199,7 +200,15 @@ class _ClientesState extends State<Clientes> {
                           IconButton(
                             icon: const Icon(Icons.delete),
                             color: Colors.red,
-                            onPressed: () => _delete(documentSnapshot.id, documentSnapshot['nombre'].toString())
+                            onPressed:() async {
+                              if (await confirm(
+                                context,
+                                title: const Text("Confirmar"),
+                                content: const Text("Esta Seguro De Eliminar El Registro")
+                              )) {
+                                _delete(documentSnapshot.id, documentSnapshot['nombre'].toString());
+                              }
+                            }
                           ),
                         ],
                       ),
@@ -223,7 +232,7 @@ class _ClientesState extends State<Clientes> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const AddCliente()));
-        },//=> _create(),
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
