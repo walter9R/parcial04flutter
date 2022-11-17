@@ -27,14 +27,6 @@ class _ClientesState extends State<Clientes> {
     super.initState();
   }
 
-  //actualizacion de clientes
-  Future<void> _update([DocumentSnapshot? documentSnapshot]) async {
-    if (documentSnapshot != null) {
-      //_nombreController.text = documentSnapshot['nombre'].toString();
-      //_precioController.text = documentSnapshot['precio'].toString();
-    }
-  }
-
   Future<void> _delete(String clienteId, String nameClient) async {
     await _clientes.doc(clienteId).delete();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -47,10 +39,7 @@ class _ClientesState extends State<Clientes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //barra de titulo
-      appBar: AppBar(
-        title: const Center(child: Text('Mantenimiento Clientes')),
-      ),
+      appBar:  appBarClientes(),
 
       //listado de clientes extraidos de base de datos
       body: StreamBuilder(
@@ -126,18 +115,39 @@ class _ClientesState extends State<Clientes> {
           );
         },
       ),
+    );
+  }
 
-      // adicion de clientes
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+  appBarClientes() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Color.fromARGB(159, 132, 181, 219),
+      elevation: 0,
+      title: Padding(
+          padding: const EdgeInsets.only(left: 0, right: 10),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            const Text(
+              "Mantenimiento Clientes",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            MaterialButton(
+              minWidth: 30.0,
+              height: 40.0,
+              onPressed: () {
+                Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const AddCliente()));
-        },
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
+              },
+              color: Colors.blueAccent,
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+            ),
+          ])),
     );
   }
 }
