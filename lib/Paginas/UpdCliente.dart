@@ -41,7 +41,7 @@ class _UdpClienteState extends State<UdpCliente> {
     _nombreController.text = widget.cliente_upd['nombre'].toString();
     _apellidoController.text = widget.cliente_upd['apellido'].toString();
     _fechnacimientoController.text = widget.cliente_upd['fechnacimiento'].toString();
-    _reservacionController.text="W6mHr47WuKPpt4BuPNEr";//cambiar la forma de conseguir el dato
+    _reservacionController.text = widget.cliente_upd['reservas_id'].toString();
     _sexoController.text= widget.cliente_upd['sexo'].toString();
     if (widget.cliente_upd['sexo'].toString().contains("Femenino")){
       activo = false;
@@ -71,6 +71,7 @@ class _UdpClienteState extends State<UdpCliente> {
           switchGenero(),
           tipoCliente(),
           UsuarioCliente(),
+          reservaCliente(),
           btnAdicionar(),
           btnCancelarr()
         ],
@@ -255,6 +256,24 @@ class _UdpClienteState extends State<UdpCliente> {
             border: OutlineInputBorder(),
             //prefixIcon: Icon(Icons.nature_people),
             hintText: "Ingrese su Usuario"),
+        style: TextStyle(
+            fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget reservaCliente() {
+    return Padding(
+      padding: EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 10),
+      child: TextField(
+        controller: _reservacionController,
+        decoration: InputDecoration(
+            labelText: 'Reserva',
+            fillColor: Colors.white,
+            filled: true,
+            border: OutlineInputBorder(),
+            //prefixIcon: Icon(Icons.nature_people),
+            hintText: "Ingrese su Reservacion"),
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black),
       ),

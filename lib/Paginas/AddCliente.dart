@@ -25,6 +25,7 @@ class _AddClienteState extends State<AddCliente> {
   List<String> lstTipoClie = <String>[
     'Elite',
     'Ejecutivo',
+    'Vip'
   ];
   late String dropdownValueTipoCli;
 
@@ -35,7 +36,7 @@ class _AddClienteState extends State<AddCliente> {
     _nombreController.text = "";
     _apellidoController.text = "";
     _fechnacimientoController.text = "";
-    _reservacionController.text="W6mHr47WuKPpt4BuPNEr";//cambiar la forma de conseguir el dato
+    _reservacionController.text = "";
     _sexoController.text= "Masculino";
     _usuarioController.text = "";
     dropdownValueTipoCli = lstTipoClie.first;
@@ -62,6 +63,7 @@ class _AddClienteState extends State<AddCliente> {
           switchGenero(),
           tipoCliente(),
           UsuarioCliente(),
+          reservaCliente(),
           btnAdicionar(),
           btnCancelarr()
         ],
@@ -246,6 +248,24 @@ class _AddClienteState extends State<AddCliente> {
             border: OutlineInputBorder(),
             //prefixIcon: Icon(Icons.nature_people),
             hintText: "Ingrese su Usuario"),
+        style: TextStyle(
+            fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget reservaCliente() {
+    return Padding(
+      padding: EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 10),
+      child: TextField(
+        controller: _reservacionController,
+        decoration: InputDecoration(
+            labelText: 'Reserva',
+            fillColor: Colors.white,
+            filled: true,
+            border: OutlineInputBorder(),
+            //prefixIcon: Icon(Icons.nature_people),
+            hintText: "Ingrese su Reservacion"),
         style: TextStyle(
             fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black),
       ),
