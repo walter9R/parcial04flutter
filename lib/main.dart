@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:parcial04flutter/Paginas/contenedor.dart';
+import 'package:parcial04flutter/contenedor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
