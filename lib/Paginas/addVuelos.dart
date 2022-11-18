@@ -91,7 +91,7 @@ class _AddVuelosState extends State<AddVuelos> {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 10),
       child: TextField(
-        controller: disponibilidadController,
+        controller: avionesidController,
         decoration: const InputDecoration(
             labelText: 'Avion',
             fillColor: Colors.white,
