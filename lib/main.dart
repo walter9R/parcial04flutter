@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:parcial04flutter/Paginas/Clientes.dart';
-import 'package:parcial04flutter/Paginas/Principal.dart';
+import 'package:parcial04flutter/Paginas/contenedor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(FirebaseParcial04());
+  runApp(const FirebaseParcial04());
 }
 
 class FirebaseParcial04 extends StatelessWidget {
@@ -17,7 +16,7 @@ class FirebaseParcial04 extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Firebase Firestore',
-      home: Clientes(),
+      home: Contenedor(),
     );
   }
 }
