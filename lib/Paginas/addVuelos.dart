@@ -219,7 +219,7 @@ class _AddVuelosState extends State<AddVuelos> {
             final String aviones = avionesidController.text;
 
             await vuelos.add({
-              "destino_id": destino,
+              "destinos_id": destino,
               "disponibilidad": disponibilidad,
               "tipo_vuelo": tipovuelo,
               "aviones_id": aviones,
