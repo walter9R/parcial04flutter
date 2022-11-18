@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parcial04flutter/Paginas/Clientes.dart';
+import 'package:parcial04flutter/Paginas/Reservas.dart';
 import 'package:parcial04flutter/Paginas/Vuelos.dart';
 
 class Contenedor extends StatefulWidget {
@@ -56,7 +57,7 @@ class _ContenedorState extends State<Contenedor> {
   Widget body() {
     return IndexedStack(index: menuactivo, children: const [
       Clientes(),
-      Clientes(),
+      Reservas(),
       Vuelos(),
     ]);
   }
