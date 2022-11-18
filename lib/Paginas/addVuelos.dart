@@ -80,7 +80,7 @@ class _AddVuelosState extends State<AddVuelos> {
             filled: true,
             border: OutlineInputBorder(),
             //prefixIcon: Icon(Icons.nature_people),
-            hintText: "Ingrese disponibilidad"),
+            hintText: "Ingrese destino"),
         style: const TextStyle(
             fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black),
       ),
@@ -91,7 +91,7 @@ class _AddVuelosState extends State<AddVuelos> {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 10),
       child: TextField(
-        controller: destinosidController,
+        controller: disponibilidadController,
         decoration: const InputDecoration(
             labelText: 'Avion',
             fillColor: Colors.white,
