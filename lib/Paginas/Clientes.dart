@@ -13,13 +13,6 @@ class Clientes extends StatefulWidget {
 
 class _ClientesState extends State<Clientes> {
   // text fields' controllers
-  final TextEditingController _nombreController = TextEditingController();
-  final TextEditingController _apellidoController = TextEditingController();
-  final TextEditingController _fechnacimientoController = TextEditingController();
-  final TextEditingController _reservacionController = TextEditingController();
-  final TextEditingController _sexoController = TextEditingController();
-  final TextEditingController _tipoController = TextEditingController();
-  final TextEditingController _usuarioController = TextEditingController();
   final CollectionReference _clientes = FirebaseFirestore.instance.collection('clientes');
 
   @override
@@ -60,7 +53,8 @@ class _ClientesState extends State<Clientes> {
                       "Fecha Nacimiento: " + documentSnapshot['fechnacimiento'].toString() + "\n" +
                       "Sexo: " + documentSnapshot['sexo'].toString() + "\n" +
                       "Tipo: " + documentSnapshot['tipo'].toString() + "\n" +
-                      "Usuario: " + documentSnapshot['usuario'].toString(),
+                      "Usuario: " + documentSnapshot['usuario'].toString()  + "\n" +
+                      "Reservacion: " + documentSnapshot['reservas_id'].toString(),
                       style: TextStyle(
                         fontSize: 14, 
                         fontWeight: FontWeight.w400,
